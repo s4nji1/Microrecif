@@ -1,8 +1,8 @@
-#include <iostream>
-#include <fstream>
-#include <random>
-#include <cmath>
-#include "constantes.cc"
+#ifndef SHAPE_H
+#define SHAPE_H
+
+#include "constantes.h"
+
 
 typedef struct S2d {
     double x ;
@@ -22,3 +22,5 @@ class Segment{
         extr.y = base.y + longueur * (sin(angle));
     }
 };
+
+#endif

@@ -3,15 +3,10 @@
 #include <random>
 #include <cmath>
 #include "shape.h"
-#include "constantes.cc"
-#include "lifeform.cc"
 #include "message.h"
-#include "Simulation.cc"
+#include "lifeform.h"
 
 using namespace std ;
-
-
-
 
 int main(){
     Algue A;
