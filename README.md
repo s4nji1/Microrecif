@@ -1,8 +1,7 @@
 <!-- project cpp --!>
  
  <!-- Dot Product: The dot product of two vectors  -->
- <!-- 𝑣=(𝑣𝑥,𝑣𝑦) -->
- <!-- v=(vx ,vy​) and 𝑤=(𝑤𝑥,𝑤𝑦)in 2D space is calculated as: -->
+ <!-- 𝑣=(𝑣𝑥,𝑣𝑦) and 𝑤=(𝑤𝑥,𝑤𝑦)in 2D space is calculated as: -->
  <!-- 𝑣⋅𝑤 = 𝑣𝑥 ⋅ 𝑤𝑥 + 𝑣𝑦 ⋅ 𝑤 -->
 
  <!-- Magnitude of a Vector: The magnitude (or length) of a vector  -->
