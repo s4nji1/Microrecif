@@ -2,7 +2,7 @@
 #include <fstream>
 #include <random>
 #include <cmath>
-#include "shape.h"
+#include "../shape.h"
 #include "message.h"
 #include "lifeform.h"
 
@@ -10,9 +10,9 @@ using namespace std ;
 
 int main(){
     Algue A;
-    A.~Algue();
+    A.~Algue(); 
     while(true){
-        
+       
     }
     return 0;
 }

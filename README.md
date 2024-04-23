@@ -1,4 +1,4 @@
-<!-- project cpp --!>
+<!-- project cpp -->
 
  <!--Ecart angulaire -->
  <!-- Dot Product: The dot product of two vectors  -->

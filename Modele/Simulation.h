@@ -1,6 +1,8 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+#include <iostream>
+#include <fstream>
 
 class Simulation {
     public:
