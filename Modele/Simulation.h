@@ -4,17 +4,17 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
+
 class Simulation {
     public:
     static int nbSim;
     static int nbAlg;
     static int nbCor;
     static int nbSca;
+    void lecture_fichier(string);
 };
 
-int Simulation::nbSim = 0;
-int Simulation::nbAlg = 0;
-int Simulation::nbCor = 0;
-int Simulation::nbSca = 0;
+
 
 #endif

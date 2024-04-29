@@ -5,12 +5,13 @@
 #include "../shape.h"
 #include "message.h"
 #include "lifeform.h"
+#include "Simulation.h"
 
 using namespace std ;
 
 int main(){
     Algue A;
-    A.~Algue(); 
+    // A.~Algue(); 
     while(true){
        
     }

@@ -4,28 +4,43 @@
 #include "shape.h"
 
 Segment::Segment(){
-        base.x = rand() % (int)(dmax - 2);
+        base.x = rand() % (int)(dmax - 2);  
         base.y = rand() % (int)(dmax - 2);
         extr.x = base.x + longueur * (cos(angle));
         extr.y = base.y + longueur * (sin(angle));
     }
 
-double Segment:: ecartAngulaire(Segment &A, Segment &B){
+// double Segment::ecartAngulaire(Segment &A, Segment &B){
 
-        double vx = A.extr.x - A.base.x;
-        double vy = A.extr.y - A.base.y;
-        double wx = B.extr.x - B.base.x;
-        double wy = B.extr.y - B.base.y;
+//         double vx = A.extr.x - A.base.x;
+//         double vy = A.extr.y - A.base.y;
+//         double wx = B.extr.x - B.base.x;
+//         double wy = B.extr.y - B.base.y;
 
-        double dotProduct = vx * wx + vy * wy;
-        double magA = sqrt( pow(vx,2) + pow(vy,2));
-        double magB = sqrt( pow(wx,2) + pow(wy,2));
+//         double dotProduct = vx * wx + vy * wy;
+//         double magA = sqrt( pow(vx,2) + pow(vy,2));
+//         double magB = sqrt( pow(wx,2) + pow(wy,2));
 
-        double cosAlpha = dotProduct / (magA * magB);
-        double alpha = acos(cosAlpha);
+//         double cosAlpha = dotProduct / (magA * magB);
+//         double alpha = acos(cosAlpha);
 
-        return alpha;
-}
+//         return alpha;
+// }
+
+double Segment::ecartAngulaire(const Segment& seg) const {
+        // Calcul de l'angle entre les segments
+        double dotProduct = (extr.x - base.x) * (seg.extr.x - seg.base.x) + (extr.y - base.y) * (seg.extr.y - seg.base.y);
+        double magA = hypot(extr.x - base.x, extr.y - base.y);
+        double magB = hypot(seg.extr.x - seg.base.x, seg.extr.y - seg.base.y);
+        double angle = acos(dotProduct / (magA * magB));
+
+        // Normalisation de l'angle dans l'intervalle [-π, π]
+        if (angle > M_PI) {
+            angle -= 2 * M_PI;
+        }
+
+        return angle;
+    }
 
 bool Segment::intersection(const Segment& A, const Segment& B) {
 
