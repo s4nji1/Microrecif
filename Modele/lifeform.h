@@ -22,7 +22,7 @@ class Algue : public LifeForm {
     S2d position;
     Algue();
     ~Algue();
-    void increment();
+    // void increment();
 };
 
 class Corail : public LifeForm {
@@ -39,10 +39,10 @@ class Corail : public LifeForm {
     Corail();
     Corail(int , int ,int ,int ,int ,Segment*);
     ~Corail();
-    void increment();
+    // void increment();
+    int get_staticId();
     int *get_id_tab();
     int get_id();
-    int get_staticId();
     int get_nb_seg();
     Segment *get_seg();
     enum Statut_cor get_status();
@@ -62,6 +62,7 @@ class Scavenger : public LifeForm {
     Scavenger();
     ~Scavenger();
     void check_radius();
+    void check_computed_position();
 };
 
 #endif

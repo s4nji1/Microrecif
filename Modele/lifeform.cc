@@ -21,9 +21,9 @@ double LifeForm::get_y(){
     }
 
 LifeForm::LifeForm(){
-    position.x = rand() % (int)(dmax - 2);
-    position.y = rand() % (int)(dmax - 2);
-    age = 0;
+    // position.x = rand() % (int)(dmax - 2);
+    // position.y = rand() % (int)(dmax - 2);
+    // age = 0;
 }
 
 LifeForm::LifeForm(int a, double x, double y){
@@ -74,11 +74,11 @@ Corail::Corail(){
         // segment.base.y;
         // segment.extr.x;
         // segment.extr.y;
-        id = staticId;
-        staticId++;
-        status = Statut_cor::ALIVE;
-        rotationDirection = Dir_rot_cor::TRIGO;
-        developmentStatus = Statut_dev::EXTEND;
+        // id = staticId;
+        // staticId++;
+        // status = Statut_cor::ALIVE;
+        // rotationDirection = Dir_rot_cor::TRIGO;
+        // developmentStatus = Statut_dev::EXTEND;
         Simulation::nbCor++;
         cout << "Corail constructed, Total = " << Simulation::nbCor << endl ;
     }
@@ -93,7 +93,7 @@ Corail::Corail(int a, int b,int c,int d,int e,Segment *f) : LifeForm(a,b,c) {
 }
 
 void Corail::check_segement_angle(){
-    for(int i = 0; i < nb_seg; i++){
+    for(int i = 0; i < nb_seg ; i++){
         if( seg[i].angle < -M_PI || seg[i].angle > M_PI ){
             cout << message::segment_angle_outside(id, seg[i].angle) << endl ;
             exit(EXIT_FAILURE);
@@ -102,7 +102,7 @@ void Corail::check_segement_angle(){
 }
 
 void Corail::check_segement_length(){
-    for(int i = 0; i < nb_seg; i++){
+    for(int i = 0; i < nb_seg ; i++){
         if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur > l_repro ){
             cout << message::segment_length_outside(id, seg[i].longueur) << endl ;
             exit(EXIT_FAILURE);
@@ -110,7 +110,9 @@ void Corail::check_segement_length(){
     }
 }
 
-
+int Corail::get_staticId(){
+        return staticId;
+    }
 
 int* Corail::get_id_tab(){
         return id_tab;
@@ -118,10 +120,6 @@ int* Corail::get_id_tab(){
 
 int Corail::get_id(){
         return id;
-    }
-
-int Corail::get_staticId(){
-        return staticId;
     }
 
 int Corail::get_nb_seg(){
@@ -161,14 +159,14 @@ Corail::~Corail(){
 
 //     }
 
-int Corail::staticId = 0;
+// int Corail::staticId = 0;
 
 Scavenger::Scavenger(){
         // position.x = rand() % (int)(dmax - 2);
         // position.y = rand() % (int)(dmax - 2);
         // age = 0;
-        status = Statut_sca::LIBRE;
-        rayon = r_sca;
+        // status = Statut_sca::LIBRE;
+        // rayon = r_sca;
         Simulation::nbSca++;
         cout << "Scavenger constructed, Total = " << Simulation::nbSca << endl ;
     }
