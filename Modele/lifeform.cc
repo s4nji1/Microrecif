@@ -122,10 +122,7 @@ enum Statut_dev Corail::get_developmentStatus(){
         return developmentStatus;
     }
 
-Corail::~Corail(){
-        Simulation::nbCor--;
-        cout << "Corail destroyed, Total = " << Simulation::nbCor << endl ;
-}
+Corail::~Corail(){}
 
 void Corail::test_duplicated_id(int d){
     for(int i = 0; i < index_id_s ; i++){
@@ -135,13 +132,24 @@ void Corail::test_duplicated_id(int d){
     }
 }
 
+enum Statut_sca Scavenger::get_status(){
+    return status;
+}
+
+int Scavenger::get_rayon(){
+    return rayon;
+}
+int Scavenger::get_corail_id_cible(){
+    return corail_id_cible;
+}
+
 Scavenger::Scavenger(){
         
 }
 
 Scavenger::~Scavenger(){
         
-    }
+}
 
 Scavenger::Scavenger(double x, double y, int age, double r, enum Statut_sca statut, int id) : LifeForm(x,y,age){
     status = statut;

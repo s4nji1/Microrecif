@@ -20,7 +20,6 @@ class LifeForm {
 
 class Algue : public LifeForm {
     public:
-    S2d position;
     Algue();
     Algue(double, double, int);
     ~Algue();
@@ -55,11 +54,13 @@ class Corail : public LifeForm {
 };
 
 class Scavenger : public LifeForm {
-    public:
     enum Statut_sca status;
     int rayon;
     int corail_id_cible;
-    S2d position;
+    public:
+    enum Statut_sca get_status();
+    int get_rayon();
+    int get_corail_id_cible();
     Scavenger();
     Scavenger(double, double, int, double, enum Statut_sca, int);
     ~Scavenger();

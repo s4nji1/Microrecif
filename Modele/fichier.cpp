@@ -16,7 +16,8 @@
 using namespace std ;
 
 int main(){
-    Scavenger sca1(2.5,3.5,-5,5,LIBRE,1);
-    sca1.test_age();
+    double a,l;
+    Corail c(-1,-1,-1,1,DEAD,TRIGO,EXTEND,5,&l,&a);
+    c.test_duplicated_id(5);
     return 0;
 }
