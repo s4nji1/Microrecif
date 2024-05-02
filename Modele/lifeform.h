@@ -1,6 +1,8 @@
 #ifndef LIFEFORM_H
 #define LIFEFORM_H
 
+#include "constantes.h"
+
 using namespace std;
 
 class LifeForm {
@@ -8,61 +10,62 @@ class LifeForm {
     S2d position;
     public:
     LifeForm();
-    LifeForm(int ,double ,double);
+    LifeForm(double, double, int);
     int get_age();
     double get_x();
     double get_y();
-    void check_age();
-    void check_position();
-    void check_computed_position();
+    void test_age();
+    void test_position();
 };
 
 class Algue : public LifeForm {
     public:
     S2d position;
     Algue();
+    Algue(double, double, int);
     ~Algue();
-    // void increment();
 };
 
 class Corail : public LifeForm {
-    static int staticId;
-    int *id_tab;
+    int index_id_s;
+    int *id_s;
     int id;
-    int nb_seg;
+    int nbrseg;
     Segment *seg;
     enum Statut_cor status;
-    enum Dir_rot_cor rotationDirection; //dir_rot
+    enum Dir_rot_cor rotationDirection;
     enum Statut_dev developmentStatus;
-    Segment segment;
     public :
     Corail();
-    Corail(int , int ,int ,int ,int ,Segment*);
+    Corail(double, double, int, int, enum Statut_cor, enum Dir_rot_cor ,enum Statut_dev ,int ,double* ,double*);
     ~Corail();
-    // void increment();
-    int get_staticId();
-    int *get_id_tab();
+    int get_index_id_s();
+    int *get_id_s();
     int get_id();
-    int get_nb_seg();
+    int get_nbrseg();
     Segment *get_seg();
     enum Statut_cor get_status();
     enum Dir_rot_cor get_rotationDirection();
     enum Statut_dev get_developmentStatus();
     Segment get_segment();
-    void check_segement_length();
-    void check_segement_angle();
-    void check_computed_position();
+    void test_segement_length();
+    void test_segement_angle();
+    void test_position();
+    void test_duplicated_id(int);
 };
 
 class Scavenger : public LifeForm {
     public:
     enum Statut_sca status;
     int rayon;
+    int corail_id_cible;
     S2d position;
     Scavenger();
+    Scavenger(double, double, int, double, enum Statut_sca, int);
     ~Scavenger();
-    void check_radius();
-    void check_computed_position();
+    void test_radius();
+    int aux_invalid_id();
+    void test_invalid_id();
 };
 
 #endif
