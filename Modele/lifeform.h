@@ -2,6 +2,8 @@
 #define LIFEFORM_H
 
 #include "constantes.h"
+#include <fstream>
+
 
 using namespace std;
 

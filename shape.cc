@@ -101,12 +101,14 @@ bool Segment::intersection(const Segment& A, const Segment& B) {
 
 void test_segment_collision(const Segment& seg1, const Segment& seg2, int id1, int id2){
     if (doIntersection(seg1, seg2)) {
-        cout << message::segment_collision(id1 ,id2 ,seg1.index,seg2.index);
+        ofstream f{"out9.txt"};
+        f << message::segment_collision(id1 ,id2 ,seg1.index,seg2.index);
     }
 }
 
 void Segment::test_segment_superposition(const Segment& seg, int id){
     if(Segment::ecartAngulaire(seg) < epsil_zero) {
-        cout << message::segment_superposition(id,seg.index,this->index);
+        ofstream f{"out10.txt"};
+        f << message::segment_superposition(id,seg.index,this->index);
     }
 }

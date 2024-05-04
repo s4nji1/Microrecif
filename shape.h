@@ -1,6 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include <fstream>
+
 typedef struct S2d {
     double x ;
     double y ;

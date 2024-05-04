@@ -32,21 +32,24 @@ LifeForm::LifeForm(double x, double y, int a){
 
 void LifeForm::test_age(){
     if( age <= 0 ){
-        cout << message::lifeform_age(age) << endl ;
+        ofstream f{"out1.txt"};
+        f << message::lifeform_age(age) << endl ;
         exit(EXIT_FAILURE);
     }
 }
 
 void LifeForm::test_position(){
     if( position.x < 1 || position.x > dmax - 1 || position.y < 1 || position.y > dmax - 2 ){
-        cout << message::lifeform_center_outside(position.x, position.y) << endl ;
+        ofstream f{"out2.txt"};
+        f << message::lifeform_center_outside(position.x, position.y) << endl ;
         exit(EXIT_FAILURE);
     }
 }
 
 void Corail::test_position(){
     if( get_x() <= 0 || get_x() >= dmax || get_y() <= 0 || get_y() >= dmax ){
-        cout << message::lifeform_computed_outside(id, get_x(), get_y()) << endl ;
+        ofstream f{"out3.txt"};
+        f << message::lifeform_computed_outside(id, get_x(), get_y()) << endl ;
         exit(EXIT_FAILURE);
     }
 }
@@ -75,7 +78,8 @@ Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enu
 void Corail::test_segement_angle(){
     for(int i = 0; i < nbrseg ; i++){
         if( seg[i].angle < -M_PI || seg[i].angle > M_PI ){
-            cout << message::segment_angle_outside(id, seg[i].angle) << endl ;
+            ofstream f{"out4.txt"};
+            f << message::segment_angle_outside(id, seg[i].angle) << endl ;
             exit(EXIT_FAILURE);
         }
     }
@@ -84,7 +88,8 @@ void Corail::test_segement_angle(){
 void Corail::test_segement_length(){
     for(int i = 0; i < nbrseg ; i++){
         if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur > l_repro ){
-            cout << message::segment_length_outside(id, seg[i].longueur) << endl ;
+            ofstream f{"out5.txt"};
+            f << message::segment_length_outside(id, seg[i].longueur) << endl ;
             exit(EXIT_FAILURE);
         }
     }
@@ -127,7 +132,8 @@ Corail::~Corail(){}
 void Corail::test_duplicated_id(int d){
     for(int i = 0; i < index_id_s ; i++){
         if(id_s[i] == d){
-            cout << message::lifeform_duplicated_id(id) << endl ;
+            ofstream f{"out6.txt"};
+            f << message::lifeform_duplicated_id(id) << endl ;
         }
     }
 }
@@ -159,7 +165,8 @@ Scavenger::Scavenger(double x, double y, int age, double r, enum Statut_sca stat
 
 void Scavenger::test_radius(){
     if( rayon < r_sca || rayon > r_sca_repro ){
-        cout << message::scavenger_radius_outside(rayon) << endl ;
+        ofstream f{"out7.txt"};
+        f << message::scavenger_radius_outside(rayon) << endl ;
         exit(EXIT_FAILURE);
     }
 }
@@ -180,6 +187,7 @@ int Scavenger::aux_invalid_id(){
 
 void Scavenger::test_invalid_id(){
     if(aux_invalid_id() == 0){
-        cout << message::lifeform_invalid_id(corail_id_cible) << endl;
+        ofstream f{"out8.txt"};
+        f << message::lifeform_invalid_id(corail_id_cible) << endl;
     }
 }
