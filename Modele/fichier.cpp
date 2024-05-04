@@ -16,8 +16,6 @@
 using namespace std ;
 
 int main(){
-    double a,l;
-    Corail c(-1,-1,-1,1,DEAD,TRIGO,EXTEND,5,&l,&a);
-    c.test_duplicated_id(5);
+    lecture_fichier();
     return 0;
 }

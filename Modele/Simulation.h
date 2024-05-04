@@ -6,9 +6,7 @@
 
 using namespace std;
 
-class Simulation {
-    void lecture_fichier(string);
-};
+void lecture_fichier();
 
 
 
