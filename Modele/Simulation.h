@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include "LifeForm.h"
 
 using namespace std;
 
