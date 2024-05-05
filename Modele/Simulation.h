@@ -9,6 +9,4 @@ using namespace std;
 
 void lecture_fichier();
 
-
-
 #endif

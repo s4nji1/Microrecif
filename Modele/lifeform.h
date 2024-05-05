@@ -3,6 +3,8 @@
 
 #include "constantes.h"
 #include <fstream>
+#include "../shape.h"
+#include "Simulation.h"
 
 
 using namespace std;
@@ -25,6 +27,7 @@ class Algue : public LifeForm {
     Algue();
     Algue(double, double, int);
     ~Algue();
+    void affiche();
 };
 
 class Corail : public LifeForm {
@@ -32,7 +35,7 @@ class Corail : public LifeForm {
     int *id_s;
     int id;
     int nbrseg;
-    Segment *seg;
+    vector<Segment> seg;
     enum Statut_cor status;
     enum Dir_rot_cor rotationDirection;
     enum Statut_dev developmentStatus;
@@ -44,7 +47,7 @@ class Corail : public LifeForm {
     int *get_id_s();
     int get_id();
     int get_nbrseg();
-    Segment *get_seg();
+    vector<Segment> get_seg();
     enum Statut_cor get_status();
     enum Dir_rot_cor get_rotationDirection();
     enum Statut_dev get_developmentStatus();
@@ -53,6 +56,7 @@ class Corail : public LifeForm {
     void test_segement_angle();
     void test_position();
     void test_duplicated_id(int);
+    void affiche();
 };
 
 class Scavenger : public LifeForm {
@@ -69,6 +73,7 @@ class Scavenger : public LifeForm {
     void test_radius();
     int aux_invalid_id();
     void test_invalid_id();
+    void affiche();
 };
 
 #endif

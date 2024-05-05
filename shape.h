@@ -16,6 +16,8 @@ class Segment{
     double longueur;
     int index;
     Segment();
+    Segment(double, double);
+    void addSegment(double, double);
     double ecartAngulaire(const Segment& ) const;
     bool intersection(const Segment&, const Segment&);
     double orientation(const S2d& ) const;

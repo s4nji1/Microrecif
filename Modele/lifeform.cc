@@ -8,6 +8,8 @@
 #include "lifeform.h"
 #include "message.h"
 
+
+
 int LifeForm::get_age(){
         return age;
     }
@@ -58,6 +60,12 @@ Algue::Algue(double x, double y, int age) : LifeForm(x,y,age){
 
 }
 
+void Algue::affiche(){
+    cout << "x : " << this->get_x() << endl ;
+    cout << " y : " << this->get_y() << endl ;
+    cout << " age : " << this->get_age() << endl << endl ;
+}
+
 Algue::Algue(){};
 
 Algue::~Algue(){}
@@ -67,12 +75,46 @@ Corail::Corail(){}
 Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enum Dir_rot_cor Dir_rot,enum Statut_dev Statut_dev, int nbseg, double *longueur, double *angle) : LifeForm(x,y,age) {
     id = id_;
     nbrseg = nbseg;
-    
-    seg = new Segment[nbrseg];
+    status = Statut;
+    rotationDirection = Dir_rot;
+    developmentStatus = Statut_dev;
     for(int i = 0; i < nbrseg; i++){
-        seg[i].angle = angle[i];
-        seg[i].longueur = longueur[i];
+        seg.push_back(Segment{angle[i], longueur[i]});
     }
+}
+
+string statusToString(Statut_cor status) {
+    if (status == DEAD) return "DEAD";
+    else return "ALIVE";
+}
+
+string directionToString(Dir_rot_cor direction) {
+    if (direction == TRIGO) return "TRIGO";
+    else return "INVTRIGO";
+}
+
+string developmentToString(Statut_dev development) {
+    if (development == EXTEND) return "EXTEND";
+    else return "REPRO";
+}
+
+
+void Corail::affiche(){
+    cout << "x : " << this->get_x() << endl;
+    cout << " y : " << this->get_y() << endl;
+    cout << "age : " << this->get_age() << endl;
+    cout << "id : " << this->get_id() << endl;
+    cout << "status : " << statusToString(this->status) << endl;
+    cout << "rotationDirection : " << directionToString(this->rotationDirection) << endl;
+    cout << "developmentStatus : " << developmentToString(this->developmentStatus) << endl;
+    cout << "nbrseg : " << this->get_nbrseg() << endl;
+    for (const auto& segment : this->seg ){
+        cout << "longueur : " << segment.longueur << endl; 
+    }
+    for (const auto& segment : this->seg ){
+        cout << "angle : " << segment.angle << endl; 
+    }
+    cout << endl; 
 }
 
 void Corail::test_segement_angle(){
@@ -95,6 +137,7 @@ void Corail::test_segement_length(){
     }
 }
 
+
 int Corail::get_index_id_s(){
         return index_id_s;
     }
@@ -111,7 +154,7 @@ int Corail::get_nbrseg(){
         return nbrseg;
     }
 
-Segment* Corail::get_seg(){
+vector<Segment> Corail::get_seg(){
         return seg;
     }
 
@@ -162,6 +205,21 @@ Scavenger::Scavenger(double x, double y, int age, double r, enum Statut_sca stat
     corail_id_cible = id;
     rayon = r;
 }
+
+string statutToString(Statut_sca s_sca) {
+    if (s_sca == LIBRE) return "MANGE";
+    else return "LIBRE";
+}
+
+void Scavenger::affiche(){
+    cout << "x : " << this->get_x() << endl ;
+    cout << " y : " << this->get_y() << endl ;
+    cout << " age : " << this->get_age() << endl ;
+    cout << " rayon : " << this->get_rayon() << endl;
+    cout << "Statut : " << statutToString(this->status) << endl ;
+    cout << "Id cible : " << this->get_corail_id_cible() << endl << endl ;
+}
+
 
 void Scavenger::test_radius(){
     if( rayon < r_sca || rayon > r_sca_repro ){

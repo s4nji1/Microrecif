@@ -13,6 +13,11 @@ Segment::Segment(){
         extr.y = base.y + longueur * (sin(angle));
     }
 
+Segment::Segment(double a, double l) {
+    angle = a;
+    longueur = l;
+}
+
 
 double Segment::ecartAngulaire(const Segment& seg) const {
         double dotProduct = (extr.x - base.x) * (seg.extr.x - seg.base.x) + (extr.y - base.y) * (seg.extr.y - seg.base.y);
