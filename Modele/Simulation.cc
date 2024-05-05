@@ -66,7 +66,6 @@ void lecture_fichier(){
         coral.test_position();
         coral.test_segement_length();
         coral.test_segement_angle();
-        coral.test_duplicated_id(coral.get_id());
     }
 
     int nbSca;

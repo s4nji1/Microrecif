@@ -25,6 +25,7 @@ class Segment{
     int isAligned(const S2d& p, const S2d& q) const ;
     friend bool doIntersection(const Segment&, const Segment&);
     void test_segment_superposition(const Segment& , int );
+    friend void test_segment_collision(const Segment&, const Segment&, int, int);
 };
 
 void test_segment_collision(const Segment&, const Segment&, int, int);
