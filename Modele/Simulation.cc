@@ -25,6 +25,8 @@ void lecture_fichier(){
 
     for(Algue al : algues){
         al.affiche();
+        al.test_age();
+        al.test_position();
     }
 
     int nbCor;
@@ -60,6 +62,11 @@ void lecture_fichier(){
 
     for (auto coral : corails) {
         coral.affiche();
+        coral.test_age();
+        coral.test_position();
+        coral.test_segement_length();
+        coral.test_segement_angle();
+        coral.test_duplicated_id(coral.get_id());
     }
 
     int nbSca;
@@ -81,6 +88,10 @@ void lecture_fichier(){
 
     for (auto sca : scavengers) {
         sca.affiche();
+        sca.test_age();
+        sca.test_position();
+        sca.test_radius();
+        sca.test_invalid_id();
     }
 
 }

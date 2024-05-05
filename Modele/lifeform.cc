@@ -207,8 +207,8 @@ Scavenger::Scavenger(double x, double y, int age, double r, enum Statut_sca stat
 }
 
 string statutToString(Statut_sca s_sca) {
-    if (s_sca == LIBRE) return "MANGE";
-    else return "LIBRE";
+    if (s_sca == LIBRE) return "LIBRE";
+    else return "MANGE";
 }
 
 void Scavenger::affiche(){

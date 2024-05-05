@@ -61,7 +61,7 @@ class Corail : public LifeForm {
 
 class Scavenger : public LifeForm {
     enum Statut_sca status;
-    int rayon;
+    double rayon;
     int corail_id_cible;
     public:
     enum Statut_sca get_status();
