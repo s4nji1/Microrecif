@@ -31,8 +31,8 @@ class Algue : public LifeForm {
 };
 
 class Corail : public LifeForm {
-    int index_id_s;
-    int *id_s;
+    static int index_id_s;
+    static int *id_s;
     int id;
     int nbrseg;
     vector<Segment> seg;

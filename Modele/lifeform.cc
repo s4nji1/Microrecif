@@ -72,8 +72,13 @@ Algue::~Algue(){}
 
 Corail::Corail(){}
 
+int* Corail::id_s = new int[20];
+int Corail::index_id_s = 0;
+
 Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enum Dir_rot_cor Dir_rot,enum Statut_dev Statut_dev, int nbseg, double *longueur, double *angle) : LifeForm(x,y,age) {
     id = id_;
+    id_s[index_id_s] = id;
+    index_id_s++;
     nbrseg = nbseg;
     status = Statut;
     rotationDirection = Dir_rot;
