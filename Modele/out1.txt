@@ -1,2 +1,2 @@
-lifeform age (4294967270) is not strictly positive
+lifeform age (4294967286) is not strictly positive
 

@@ -7,10 +7,6 @@
 using namespace std;
 
 Segment::Segment(){
-        // base.x = rand() % (int)(dmax - 2);  
-        // base.y = rand() % (int)(dmax - 2);
-        extr.x = base.x + longueur * (cos(angle));
-        extr.y = base.y + longueur * (sin(angle));
     }
 
 Segment::Segment(double a, double l) {

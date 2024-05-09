@@ -114,10 +114,10 @@ void Corail::affiche(){
     cout << "developmentStatus : " << developmentToString(this->developmentStatus) << endl;
     cout << "nbrseg : " << this->get_nbrseg() << endl;
     for (const auto& segment : this->seg ){
-        cout << "longueur : " << segment.longueur << endl; 
+        cout << "angle : " << segment.angle << endl; 
     }
     for (const auto& segment : this->seg ){
-        cout << "angle : " << segment.angle << endl; 
+        cout << "longueur : " << segment.longueur << endl; 
     }
     cout << endl; 
 }
@@ -178,11 +178,16 @@ enum Statut_dev Corail::get_developmentStatus(){
 Corail::~Corail(){}
 
 void Corail::test_duplicated_id(int d){
+    int k = 0;
     for(int i = 0; i < index_id_s ; i++){
         if(id_s[i] == d){
-            ofstream f{"out6.txt"};
-            f << message::lifeform_duplicated_id(id) << endl ;
+            k++;
         }
+    }
+    if(k > 1){
+        ofstream f{"out6.txt"};
+        f << message::lifeform_duplicated_id(id) << endl ;
+        exit(EXIT_FAILURE);
     }
 }
 

@@ -49,8 +49,8 @@ void lecture_fichier(){
         double *longueur = new double[nbseg];
 
         for(int j = 0; j < nbseg; j++){
-            f >> longueur[j];
             f >> angle[j];
+            f >> longueur[j];
         }
 
         Corail c(xx, yy, age, id, Stat, Dir, Dev, nbseg, longueur, angle);
@@ -67,6 +67,13 @@ void lecture_fichier(){
         coral.test_segement_length();
         coral.test_segement_angle();
         coral.test_duplicated_id(coral.get_id());
+        vector<Segment> s = coral.get_seg();
+        for(int i = 0 ; i < coral.get_nbrseg()-1 ; i++){
+            s[i].test_segment_superposition(s[i+1], coral.get_id());
+        }
+        for(int i = 0 ; i < coral.get_nbrseg()-1 ; i++){
+            
+        }
     }
 
     int nbSca;
