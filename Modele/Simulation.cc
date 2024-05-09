@@ -71,10 +71,17 @@ void lecture_fichier(){
         for(int i = 0 ; i < coral.get_nbrseg()-1 ; i++){
             s[i].test_segment_superposition(s[i+1], coral.get_id());
         }
-        for(int i = 0 ; i < coral.get_nbrseg()-1 ; i++){
-            
+
+        for(int i = 0 ; i < coral.get_nbrseg() ; i++){
+            for(int j = 0; j < nbCor; j++ ){
+                for(int k = 0 ; k < corails[j].get_nbrseg(); k++){
+                    if(corails[j].get_id() != coral.get_id() || s[i].index != s[k].index){
+                        test_segment_collision(s[i],s[k],coral.get_id(),corails[j].get_id());
+                        }
+                    }
+                }
+            }
         }
-    }
 
     int nbSca;
     f >> nbSca;
