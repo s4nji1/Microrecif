@@ -1,0 +1,2 @@
+Scavenger radius (2) is outside of allowed boundaries of [r_sca,r_sca_repro[
+

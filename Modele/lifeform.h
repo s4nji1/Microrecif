@@ -1,97 +1,79 @@
 #ifndef LIFEFORM_H
 #define LIFEFORM_H
 
-#include <iostream>
-#include <fstream>
-#include <random>
-#include <cmath>
-#include "Simulation.h"
 #include "constantes.h"
-#include "shape.h"
+#include <fstream>
+#include "../shape.h"
+#include "Simulation.h"
+
 
 using namespace std;
 
 class LifeForm {
-    public:
     int age;
+    S2d position;
+    public:
+    LifeForm();
+    LifeForm(double, double, int);
+    int get_age();
+    double get_x();
+    double get_y();
+    void test_age();
+    void test_position();
 };
 
 class Algue : public LifeForm {
     public:
-    S2d position;
-    Algue(){
-        position.x = rand() % (int)(dmax - 2);
-        position.y = rand() % (int)(dmax - 2);
-        age = 0;
-        Simulation::nbAlg++;
-        cout << "Algue constructed, Total = " << Simulation::nbAlg << endl ;
-    }
-    ~Algue(){
-        Simulation::nbAlg--;
-        cout << "Algue destroyed, Total = " << Simulation::nbAlg << endl ;
-    }
-    void increment(){
-        age++;
-        if( age = max_life_alg ){
-            this->~Algue();
-        }
-    }
+    Algue();
+    Algue(double, double, int);
+    ~Algue();
+    void affiche();
 };
 
 class Corail : public LifeForm {
-    public:
-    static int staticId;
+    static int index_id_s;
+    static int *id_s;
     int id;
+    int nbrseg;
+    vector<Segment> seg;
     enum Statut_cor status;
-    enum Dir_rot_cor rotationDirection; //dir_rot
+    enum Dir_rot_cor rotationDirection;
     enum Statut_dev developmentStatus;
-    Segment segment;
-    Corail(){
-        segment.base.x;
-        segment.base.y;
-        segment.extr.x;
-        segment.extr.y;
-        age = 0;
-        id = staticId;
-        staticId++;
-        status = Statut_cor::ALIVE;
-        rotationDirection = Dir_rot_cor::TRIGO;
-        developmentStatus = Statut_dev::EXTEND;
-        Simulation::nbCor++;
-        cout << "Corail constructed, Total = " << Simulation::nbCor << endl ;
-    }
-    ~Corail(){
-        Simulation::nbCor--;
-        cout << "Corail destroyed, Total = " << Simulation::nbCor << endl ;
-    }
-    void increment(){
-        age++;
-        if( age = max_life_cor ){
-            this->~Corail();
-        }
-
-    }
+    public :
+    Corail();
+    Corail(double, double, int, int, enum Statut_cor, enum Dir_rot_cor ,enum Statut_dev ,int ,double* ,double*);
+    ~Corail();
+    int get_index_id_s();
+    int *get_id_s();
+    int get_id();
+    int get_nbrseg();
+    vector<Segment> get_seg();
+    enum Statut_cor get_status();
+    enum Dir_rot_cor get_rotationDirection();
+    enum Statut_dev get_developmentStatus();
+    Segment get_segment();
+    void test_segement_length();
+    void test_segement_angle();
+    void test_position();
+    void test_duplicated_id(int);
+    void affiche();
 };
-int Corail::staticId = 0;
 
 class Scavenger : public LifeForm {
-    public:
     enum Statut_sca status;
-    int r_sca;
-    S2d position;
-    Scavenger(){
-        position.x = rand() % (int)(dmax - 2);
-        position.y = rand() % (int)(dmax - 2);
-        age = 0;
-        status = Statut_sca::LIBRE;
-        r_sca = r_sca;
-        Simulation::nbSca++;
-        cout << "Scavenger constructed, Total = " << Simulation::nbSca << endl ;
-    }
-    ~Scavenger(){
-        Simulation::nbSca--;
-        cout << "Scavenger destroyed, Total = " << Simulation::nbSca << endl ;
-    }
+    double rayon;
+    int corail_id_cible;
+    public:
+    enum Statut_sca get_status();
+    int get_rayon();
+    int get_corail_id_cible();
+    Scavenger();
+    Scavenger(double, double, int, double, enum Statut_sca, int);
+    ~Scavenger();
+    void test_radius();
+    int aux_invalid_id();
+    void test_invalid_id();
+    void affiche();
 };
 
 #endif

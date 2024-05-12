@@ -1,0 +1,2 @@
+lifeform (2) at (0.000000;2.000000) is outside allowed boundaries of ]0, max[
+
