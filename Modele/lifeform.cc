@@ -34,7 +34,7 @@ LifeForm::LifeForm(double x, double y, int a){
 
 void LifeForm::test_age(){
     if( age <= 0 ){
-        ofstream f{"out1.txt"};
+        ofstream f{"errors/out1.txt"};
         f << message::lifeform_age(age) << endl ;
         exit(EXIT_FAILURE);
     }
@@ -42,7 +42,7 @@ void LifeForm::test_age(){
 
 void LifeForm::test_position(){
     if( position.x < 1 || position.x > dmax - 1 || position.y < 1 || position.y > dmax - 2 ){
-        ofstream f{"out2.txt"};
+        ofstream f{"errors/out2.txt"};
         f << message::lifeform_center_outside(position.x, position.y) << endl ;
         exit(EXIT_FAILURE);
     }
@@ -50,7 +50,7 @@ void LifeForm::test_position(){
 
 void Corail::test_position(){
     if( get_x() <= 0 || get_x() >= dmax || get_y() <= 0 || get_y() >= dmax ){
-        ofstream f{"out3.txt"};
+        ofstream f{"errors/out3.txt"};
         f << message::lifeform_computed_outside(id, get_x(), get_y()) << endl ;
         exit(EXIT_FAILURE);
     }
@@ -125,7 +125,7 @@ void Corail::affiche(){
 void Corail::test_segement_angle(){
     for(int i = 0; i < nbrseg ; i++){
         if( seg[i].angle < -M_PI || seg[i].angle > M_PI ){
-            ofstream f{"out4.txt"};
+            ofstream f{"errors/out4.txt"};
             f << message::segment_angle_outside(id, seg[i].angle) << endl ;
             exit(EXIT_FAILURE);
         }
@@ -135,7 +135,7 @@ void Corail::test_segement_angle(){
 void Corail::test_segement_length(){
     for(int i = 0; i < nbrseg ; i++){
         if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur > l_repro ){
-            ofstream f{"out5.txt"};
+            ofstream f{"errors/out5.txt"};
             f << message::segment_length_outside(id, seg[i].longueur) << endl ;
             exit(EXIT_FAILURE);
         }
@@ -185,7 +185,7 @@ void Corail::test_duplicated_id(int d){
         }
     }
     if(k > 1){
-        ofstream f{"out6.txt"};
+        ofstream f{"errors/out6.txt"};
         f << message::lifeform_duplicated_id(id) << endl ;
         exit(EXIT_FAILURE);
     }
@@ -233,7 +233,7 @@ void Scavenger::affiche(){
 
 void Scavenger::test_radius(){
     if( rayon < r_sca || rayon > r_sca_repro ){
-        ofstream f{"out7.txt"};
+        ofstream f{"errors/out7.txt"};
         f << message::scavenger_radius_outside(rayon) << endl ;
         exit(EXIT_FAILURE);
     }
@@ -255,7 +255,7 @@ int Scavenger::aux_invalid_id(){
 
 void Scavenger::test_invalid_id(){
     if(aux_invalid_id() == 0){
-        ofstream f{"out8.txt"};
+        ofstream f{"errors/out8.txt"};
         f << message::lifeform_invalid_id(corail_id_cible) << endl;
     }
 }

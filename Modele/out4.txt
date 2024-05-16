@@ -1,2 +1,0 @@
-lifeform (2) segment orientation (3.200000) is outside of allowed boundaries of [-Pi, Pi]
-
