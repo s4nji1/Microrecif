@@ -134,7 +134,7 @@ void Corail::test_segement_angle(){
 
 void Corail::test_segement_length(){
     for(int i = 0; i < nbrseg ; i++){
-        if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur > l_repro ){
+        if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur >= l_repro ){
             ofstream f{"errors/out5.txt"};
             f << message::segment_length_outside(id, seg[i].longueur) << endl ;
             exit(EXIT_FAILURE);
@@ -232,7 +232,7 @@ void Scavenger::affiche(){
 
 
 void Scavenger::test_radius(){
-    if( rayon < r_sca || rayon > r_sca_repro ){
+    if( rayon < r_sca || rayon >= r_sca_repro ){
         ofstream f{"errors/out7.txt"};
         f << message::scavenger_radius_outside(rayon) << endl ;
         exit(EXIT_FAILURE);
