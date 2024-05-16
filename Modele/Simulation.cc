@@ -8,7 +8,7 @@ using namespace std;
 
 
 void lecture_fichier(){
-    ifstream f{"t1.txt"};
+    ifstream f{"tests/t1.txt"};
 
     int nbAlg;
     f >> nbAlg;
