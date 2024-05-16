@@ -6,10 +6,7 @@
 
 using namespace std;
 
-Segment::Segment(){
-    this->extr.x = base.x + longueur * cos(angle);
-    this->extr.y = base.y + longueur * sin(angle);
-}
+Segment::Segment(){}
 
 Segment::Segment(double a, double l) {
     angle = a;
