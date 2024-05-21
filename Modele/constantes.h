@@ -21,7 +21,7 @@
     constexpr unsigned max_life_cor(1500);
     constexpr unsigned max_life_sca(2000);
 
-    constexpr double epsil_zero(0.5) ;
+    constexpr double epsil_zero(1e-5) ;
 
     constexpr unsigned taille_dessin(500);
 

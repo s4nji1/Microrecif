@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "lifeform.h"
 #include "Simulation.h"
 #include "../shape.h"
 #include "constantes.h"
@@ -9,7 +10,7 @@
 using namespace std;
 
 void lecture_fichier() {
-    ifstream f{"tests/t11.txt"};
+    ifstream f{"tests/t15.txt"};
 
     int nbAlg;
     f >> nbAlg;

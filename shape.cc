@@ -8,12 +8,7 @@ using namespace std;
 
 Segment::Segment(){}
 
-Segment::Segment(double a, double l, int idx, double baseX, double baseY) : angle(a), longueur(l), index(idx) {
-    base.x = baseX;
-    base.y = baseY;
-    extr.x = base.x + longueur * cos(angle);
-    extr.y = base.y + longueur * sin(angle);
-}
+Segment::Segment(double a, double l, int idx) : angle(a), longueur(l), index(idx) {}
 
 
 double Segment::ecartAngulaire(const Segment& seg) const {
@@ -27,33 +22,6 @@ double Segment::ecartAngulaire(const Segment& seg) const {
     }
 
     return angle;
-}
-
-bool Segment::intersection(const Segment& A, const Segment& B) {
-    double x1 = A.base.x, y1 = A.base.y;
-    double x2 = A.extr.x, y2 = A.extr.y;
-    double x3 = B.base.x, y3 = B.base.y;
-    double x4 = B.extr.x, y4 = B.extr.y;
-
-    double denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-    double num1 = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
-    double num2 = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
-
-    if (denom == 0) {
-        if (num1 == 0 && num2 == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    double t1 = num1 / denom;
-    double t2 = num2 / denom;
-
-    if (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1) {
-        return true;
-    }
-
-    return false;
 }
 
 double Segment::orientation(const S2d& p) const {
@@ -75,7 +43,7 @@ int Segment::isAligned(const S2d& p, const S2d& q) const {
 
     if (std::abs(val) < epsil_zero && isOnSegment(q)) {
         return 0;
-    } else if (val > 0) {
+    } else if (val > epsil_zero) {
         return 1;
     } else {
         return 2;
@@ -102,13 +70,14 @@ bool doIntersection(const Segment& seg1, const Segment& seg2) {
 void test_segment_collision(const Segment& seg1, const Segment& seg2, int id1, int id2) {
     if (doIntersection(seg1, seg2)) {
         ofstream f{"errors/out9.txt"};
-        f << message::segment_collision(id1, id2, seg1.index, seg2.index);
+        f << message::segment_collision(id1, seg1.index, id2, seg2.index);
     }
 }
 
 void Segment::test_segment_superposition(const Segment& seg, int id) {
     if (this->ecartAngulaire(seg) < epsil_zero) {
         ofstream f{"errors/out10.txt"};
-        f << message::segment_superposition(id, seg.index, this->index);
+        f << message::segment_superposition(id, this->index, seg.index);
     }
 }
+

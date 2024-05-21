@@ -17,7 +17,7 @@ public:
     int index;
 
     Segment();
-    Segment(double , double,int,double,double);
+    Segment(double , double ,int );
     void addSegment(double, double);
     double ecartAngulaire(const Segment&) const;
     bool intersection(const Segment&, const Segment&);

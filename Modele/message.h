@@ -1,11 +1,6 @@
 #ifndef MESSAGE_H_INCLUDED
 #define MESSAGE_H_INCLUDED
 
-// message.h  : x fonctions pour l'affichage des messages d'erreur
-//              et une fonction supplémentaire pour indiquer le succès de la lecture
-//
-// public version V1
-//
 
 #include <string>
 
@@ -13,7 +8,7 @@ namespace message
 {
 	// age must be strictly positive
 	std::string lifeform_age(unsigned age);
-
+	
 	// only for the center coordinate that are explicitely visible in the file
 	// allowed interval is [1, max-1]
 	std::string lifeform_center_outside(double x, double y);
