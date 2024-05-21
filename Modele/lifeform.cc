@@ -83,11 +83,10 @@ Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enu
     status = Statut;
     rotationDirection = Dir_rot;
     developmentStatus = Statut_dev;
-    for(int i = 0; i < nbrseg; i++){
-        seg.push_back(Segment{angle[i], longueur[i]});
-        seg[i].extr.x = seg[i].base.x + longueur[i] * cos(angle[i]);
-        seg[i].extr.y = seg[i].base.y + longueur[i] * sin(angle[i]);
+    for(int i = 0; i < nbrseg; i++) {
+    seg.push_back(Segment(angle[i], longueur[i], i, x, y));
     }
+
 }
 
 string statusToString(Statut_cor status) {
