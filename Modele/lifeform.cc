@@ -48,7 +48,7 @@ void LifeForm::test_position(){
     }
 }
 
-void Corail::test_position(){
+void Corail::test_position_corail(){
     if( get_x() <= 0 || get_x() >= dmax || get_y() <= 0 || get_y() >= dmax ){
         ofstream f{"errors/out3.txt"};
         f << message::lifeform_computed_outside(id, get_x(), get_y()) << endl ;

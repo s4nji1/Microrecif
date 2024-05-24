@@ -12,16 +12,15 @@ Segment::Segment(double a, double l, int idx) : angle(a), longueur(l), index(idx
 
 
 double Segment::ecartAngulaire(const Segment& seg) const {
-    double dotProduct = (extr.x - base.x) * (seg.extr.x - seg.base.x) + (extr.y - base.y) * (seg.extr.y - seg.base.y);
-    double magA = hypot(extr.x - base.x, extr.y - base.y);
-    double magB = hypot(seg.extr.x - seg.base.x, seg.extr.y - seg.base.y);
-    double angle = acos(dotProduct / (magA * magB));
+    double angle1 = atan2(extr.y - base.y, extr.x - base.x);
+    
+    double angle2 = atan2(seg.extr.y - seg.base.y, seg.extr.x - seg.base.x);
 
-    if (angle > M_PI) {
-        angle -= 2 * M_PI;
-    }
+    double deviation = angle2 - angle1;
 
-    return angle;
+    deviation = fmod(deviation + M_PI, 2 * M_PI) - M_PI;
+
+    return deviation;
 }
 
 double Segment::orientation(const S2d& p) const {

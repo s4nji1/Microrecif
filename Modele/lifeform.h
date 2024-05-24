@@ -54,7 +54,7 @@ class Corail : public LifeForm {
     Segment get_segment();
     void test_segement_length();
     void test_segement_angle();
-    void test_position();
+    void test_position_corail();
     void test_duplicated_id(int);
     void affiche();
 };

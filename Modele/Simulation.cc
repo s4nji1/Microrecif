@@ -10,7 +10,7 @@
 using namespace std;
 
 void lecture_fichier() {
-    ifstream f{"tests/t15.txt"};
+    ifstream f{"tests/t11.txt"};
 
     int nbAlg;
     f >> nbAlg;
@@ -65,7 +65,7 @@ void lecture_fichier() {
     for (auto& coral : corails) {
         coral.affiche();
         coral.test_age();
-        coral.test_position();
+        coral.test_position_corail();
         coral.test_segement_length();
         coral.test_segement_angle();
         coral.test_duplicated_id(coral.get_id());
