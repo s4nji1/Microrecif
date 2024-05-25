@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include "LifeForm.h"
+#include "../shape.h"
 
 using namespace std;
 

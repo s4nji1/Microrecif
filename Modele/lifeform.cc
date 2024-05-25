@@ -48,7 +48,7 @@ void LifeForm::test_position(){
     }
 }
 
-void Corail::test_position(){
+void Corail::test_position_corail(){
     if( get_x() <= 0 || get_x() >= dmax || get_y() <= 0 || get_y() >= dmax ){
         ofstream f{"errors/out3.txt"};
         f << message::lifeform_computed_outside(id, get_x(), get_y()) << endl ;
@@ -83,10 +83,20 @@ Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enu
     status = Statut;
     rotationDirection = Dir_rot;
     developmentStatus = Statut_dev;
-    for(int i = 0; i < nbrseg; i++){
-        seg.push_back(Segment{angle[i], longueur[i]});
+    for (int i = 0; i < nbrseg; i++) {
+        seg.push_back(Segment(angle[i], longueur[i], i));
+        if (i == 0) {
+            seg[i].base.x = x;
+            seg[i].base.y = y;
+        } else {
+            seg[i].base.x = seg[i - 1].extr.x;
+            seg[i].base.y = seg[i - 1].extr.y;
+        }
+        seg[i].extr.x = seg[i].base.x + seg[i].longueur * cos(seg[i].angle);
+        seg[i].extr.y = seg[i].base.y + seg[i].longueur * sin(seg[i].angle);
     }
 }
+
 
 string statusToString(Statut_cor status) {
     if (status == DEAD) return "DEAD";
@@ -134,7 +144,7 @@ void Corail::test_segement_angle(){
 
 void Corail::test_segement_length(){
     for(int i = 0; i < nbrseg ; i++){
-        if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur > l_repro ){
+        if( seg[i].longueur < l_repro - l_seg_interne || seg[i].longueur >= l_repro ){
             ofstream f{"errors/out5.txt"};
             f << message::segment_length_outside(id, seg[i].longueur) << endl ;
             exit(EXIT_FAILURE);
@@ -232,7 +242,7 @@ void Scavenger::affiche(){
 
 
 void Scavenger::test_radius(){
-    if( rayon < r_sca || rayon > r_sca_repro ){
+    if( rayon < r_sca || rayon >= r_sca_repro ){
         ofstream f{"errors/out7.txt"};
         f << message::scavenger_radius_outside(rayon) << endl ;
         exit(EXIT_FAILURE);
