@@ -10,7 +10,7 @@
 using namespace std;
 
 void lecture_fichier() {
-    ifstream f{"tests/t11.txt"};
+    ifstream f{"tests/t12.txt"};
 
     int nbAlg;
     f >> nbAlg;
@@ -26,7 +26,7 @@ void lecture_fichier() {
     }
 
     for (Algue al : algues) {
-        al.affiche();
+        // al.affiche();
         al.test_age();
         al.test_position();
     }
@@ -63,7 +63,7 @@ void lecture_fichier() {
     }
 
     for (auto& coral : corails) {
-        coral.affiche();
+        // coral.affiche();
         coral.test_age();
         coral.test_position_corail();
         coral.test_segement_length();
@@ -73,7 +73,6 @@ void lecture_fichier() {
         for (int i = 0; i < coral.get_nbrseg() - 1; i++) {
             s[i].test_segment_superposition(s[i + 1], coral.get_id());
         }
-
         for (int i = 0; i < coral.get_nbrseg(); i++) {
             for (int j = 0; j < nbCor; j++) {
                 for (int k = 0; k < corails[j].get_nbrseg(); k++) {
@@ -82,7 +81,7 @@ void lecture_fichier() {
                     }
                 }
             }
-        }
+        }          
     }
 
     int nbSca;
@@ -102,10 +101,13 @@ void lecture_fichier() {
     }
 
     for (auto& sca : scavengers) {
-        sca.affiche();
+        // sca.affiche();
         sca.test_age();
         sca.test_position();
         sca.test_radius();
         sca.test_invalid_id();
     }
+    
+    ofstream g{"errors/out0.txt"};
+    g << message::success() << endl ;
 }

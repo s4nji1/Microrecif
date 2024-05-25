@@ -67,16 +67,16 @@ bool doIntersection(const Segment& seg1, const Segment& seg2) {
 }
 
 void test_segment_collision(const Segment& seg1, const Segment& seg2, int id1, int id2) {
-    if (doIntersection(seg1, seg2)) {
+    if (doIntersection(seg1, seg2) == true) {
         ofstream f{"errors/out9.txt"};
-        f << message::segment_collision(id1, seg1.index, id2, seg2.index);
+        f << message::segment_collision(id1, seg1.index, id2, seg2.index) << endl;
     }
 }
 
 void Segment::test_segment_superposition(const Segment& seg, int id) {
     if (this->ecartAngulaire(seg) < epsil_zero) {
         ofstream f{"errors/out10.txt"};
-        f << message::segment_superposition(id, this->index, seg.index);
+        f << message::segment_superposition(id, this->index, seg.index) << endl ;
     }
 }
 

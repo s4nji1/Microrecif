@@ -84,17 +84,19 @@ Corail::Corail(double x, double y, int age, int id_, enum Statut_cor Statut, enu
     rotationDirection = Dir_rot;
     developmentStatus = Statut_dev;
     for (int i = 0; i < nbrseg; i++) {
-    seg.push_back(Segment(angle[i], longueur[i], i));
-    if (i == 0) {
-        seg[i].base = {x, y};
-    } else {
-        seg[i].base = seg[i - 1].extr;
+        seg.push_back(Segment(angle[i], longueur[i], i));
+        if (i == 0) {
+            seg[i].base.x = x;
+            seg[i].base.y = y;
+        } else {
+            seg[i].base.x = seg[i - 1].extr.x;
+            seg[i].base.y = seg[i - 1].extr.y;
+        }
+        seg[i].extr.x = seg[i].base.x + seg[i].longueur * cos(seg[i].angle);
+        seg[i].extr.y = seg[i].base.y + seg[i].longueur * sin(seg[i].angle);
     }
-    seg[i].extr.x = seg[i].base.x + longueur[i] * cos(angle[i]);
-    seg[i].extr.y = seg[i].base.y + longueur[i] * sin(angle[i]);
 }
 
-}
 
 string statusToString(Statut_cor status) {
     if (status == DEAD) return "DEAD";
