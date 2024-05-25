@@ -10,7 +10,7 @@
 using namespace std;
 
 void lecture_fichier() {
-    ifstream f{"tests/t12.txt"};
+    ifstream f{"tests/t00.txt"};
 
     int nbAlg;
     f >> nbAlg;
